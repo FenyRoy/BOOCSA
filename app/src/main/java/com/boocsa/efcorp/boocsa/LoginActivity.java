@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mLoginEmailField;
     private EditText mloginPasswordField;
     private Button mLoginBtn;
-    private Button mNewAcntBtn;
+    private TextView mNewAcntBtn;
 
     private ProgressDialog mProgress;
 
@@ -49,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         mloginPasswordField = (EditText)findViewById(R.id.login_passwordField);
         mLoginEmailField= (EditText)findViewById(R.id.login_emailField);
 
-        mLoginBtn= (Button)findViewById(R.id.loginBtn);
-        mNewAcntBtn= (Button)findViewById(R.id.new_acntBtn);
+        mLoginBtn= (Button) findViewById(R.id.loginBtn);
+        mNewAcntBtn= (TextView) findViewById(R.id.new_acntLink);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,5 +132,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onBackPressed(){
+        finish();
+        moveTaskToBack(true);
     }
 }

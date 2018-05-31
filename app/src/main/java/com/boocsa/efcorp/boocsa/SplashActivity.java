@@ -17,6 +17,7 @@ public class SplashActivity extends AppCompatActivity {
             try {
                 sleep(3000);
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(mainIntent);
                 finish();
             } catch (InterruptedException e) {

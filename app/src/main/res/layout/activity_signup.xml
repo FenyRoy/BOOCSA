@@ -4,49 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    tools:context=".SignupActivity">
+    tools:context=".SignupActivity"
+    android:background="@color/background_def">
 
-    <EditText
-        android:id="@+id/nameField"
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/boocsa"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/signUpLogo"/>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:hint="Name"
-        android:layout_margin="10dp"
-        android:inputType="textPersonName"
-        android:padding="20dp" />
+        android:layout_below="@id/signUpLogo"
+        android:id="@+id/nameLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/nameField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable="@color/white"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:hint="Name" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/login_emailField"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nameField"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="20dp" />
+        android:layout_below="@id/nameLayout"
+        android:id="@+id/emailLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/login_emailField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable="@color/white"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:hint="Email" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/login_passwordField"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_emailField"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="20dp" />
+        android:layout_below="@id/emailLayout"
+        android:id="@+id/passwordLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/login_passwordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable="@color/white"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:hint="Password" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/signup_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_passwordField"
+        android:layout_below="@id/passwordLayout"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:padding="20dp"
-        android:text="SignUp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/background"
+        android:padding="15dp"
+        android:text="Create Account" />
 </RelativeLayout>
