@@ -1,6 +1,7 @@
 package com.boocsa.efcorp.boocsa;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.widget.BottomNavigationView;
@@ -21,14 +22,19 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
 
+
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabaseUsers;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //Firebase Authentication
 
@@ -54,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabaseUsers.keepSynced(true);
 
-
+        //To Dispaly Fragment 1 in begining
+        setTitle("Fragment Title One");
+        Fragment1 fragment1=new Fragment1();
+        FragmentTransaction fragmentTransaction1=getSupportFragmentManager().beginTransaction();
+        fragmentTransaction1.replace(R.id.frame,fragment1,"FragmentName");
+        fragmentTransaction1.commit();
 
 
         //Navigation bar and fragments
