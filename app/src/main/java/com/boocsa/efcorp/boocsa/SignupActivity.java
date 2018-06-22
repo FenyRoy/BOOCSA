@@ -63,6 +63,7 @@ public class SignupActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
 
          mProgress.setMessage("Signing Up...");
+         mProgress.setCancelable(false);
          mProgress.show();
 
          mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

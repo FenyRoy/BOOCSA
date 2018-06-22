@@ -19,11 +19,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.util.Map;
 
 public class SetupActivity extends AppCompatActivity {
 
@@ -86,6 +87,7 @@ public class SetupActivity extends AppCompatActivity {
     private void startSetupAccout() {
 
         mProgress.setMessage("Uploading....");
+        mProgress.setCancelable(false);
         mProgress.show();
         final String name= mNameField.getText().toString().trim();
 
@@ -93,14 +95,14 @@ public class SetupActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(name) && mImageUri != null){
 
-            StorageReference filepath = mStorageImage.child(mImageUri.getLastPathSegment());
+            StorageReference filepath = mStorageImage.child("Profile_Pic");
 
             filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    StorageMetadata downloadData = taskSnapshot.getMetadata(); //Check This Code getDownloadUrl() missing
-                    String downloadUri = downloadData.getPath();
+
+                    String downloadUri = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 
                     mDatabaseUsers.child(user_id).child("name").setValue(name);
                     mDatabaseUsers.child(user_id).child("image").setValue(downloadUri);
@@ -111,6 +113,11 @@ public class SetupActivity extends AppCompatActivity {
                 }
             });
 
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Fields Empty",Toast.LENGTH_LONG).show();
+            mProgress.dismiss();
         }
 
     }
@@ -125,7 +132,7 @@ public class SetupActivity extends AppCompatActivity {
             CropImage.activity(imageuri)
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .setAspectRatio(1,1)
-                    .start(this);
+                     .start(this);
 
         }
 
@@ -145,5 +152,9 @@ public class SetupActivity extends AppCompatActivity {
                 Toast.makeText(SetupActivity.this,err,Toast.LENGTH_LONG).show();
             }
         }
+    }
+    public void onBackPressed(){
+        finish();
+        moveTaskToBack(true);
     }
 }

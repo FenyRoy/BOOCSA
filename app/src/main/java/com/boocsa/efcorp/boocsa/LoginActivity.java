@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
 
             mProgress.setMessage("Loging In...");
+            mProgress.setCancelable(false);
             mProgress.show();
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override

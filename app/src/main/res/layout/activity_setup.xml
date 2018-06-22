@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_def"
     tools:context=".SetupActivity">
 
     <ImageButton
@@ -16,16 +17,25 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_social_person" />
 
-    <EditText
-        android:id="@+id/setupnameField"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/setupImageButton"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:hint="Name"
+        android:id="@+id/nameLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="8dp">
+    <EditText android:id="@+id/setupnameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textCursorDrawable="@color/white"
+        android:padding="20dp"
         android:inputType="textPersonName"
-        android:padding="20dp" />
+        android:textColor="@color/white"
+        android:hint="User Name" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/setupFinishBtn"
@@ -33,5 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Finish Setup" />
+        android:background="@drawable/background"
+        android:text="Finish Setup"
+        android:layout_marginBottom="1dp"/>
 </RelativeLayout>
