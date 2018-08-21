@@ -95,7 +95,7 @@ public class SetupActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(name) && mImageUri != null){
 
-            StorageReference filepath = mStorageImage.child("Profile_Pic");
+            StorageReference filepath = mStorageImage.child("Profile_Pic"+user_id);
 
             filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
